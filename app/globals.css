@@ -18,10 +18,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #ff9999;
+  background-image: url("./images/Mesh.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
