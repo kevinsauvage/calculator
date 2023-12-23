@@ -36,4 +36,5 @@ export type keyboardItemType = {
     | "DELETE"
     | "ADD_DECIMAL";
   payload: string;
+  ariaLabel: string;
 };

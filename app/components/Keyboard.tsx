@@ -13,6 +13,7 @@ const Keyboard = () => {
           key={index}
           className={`flex items-center backdrop-blur-xl justify-center p-4 text-2xl font-bold text-white rounded-md bg-white  ${item.styles}`}
           onClick={() => dispatch({ type: item.action, payload: item.payload })}
+          aria-label={item.ariaLabel}
         >
           {item.name}
         </button>
