@@ -24,7 +24,6 @@ const CalculatorProvider: React.FC<CalculatorProviderProps> = ({
     result: 0,
     operation: "",
     currentOperand: "",
-    previousOperand: "",
     history: "",
   });
 

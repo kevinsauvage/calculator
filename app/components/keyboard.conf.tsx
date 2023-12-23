@@ -66,7 +66,7 @@ export const keyboardItems: Array<keyboardItemType> = [
   },
   {
     name: "+",
-    styles: "bg-opacity-20",
+    styles: "row-span-2 bg-opacity-20",
     action: "ADD_OPERATION",
     payload: "+",
   },
@@ -88,18 +88,7 @@ export const keyboardItems: Array<keyboardItemType> = [
     action: "ADD_NUMBER",
     payload: "3",
   },
-  {
-    name: "=",
-    styles: "row-span-2 bg-opacity-20",
-    action: "CALCULATE",
-    payload: "",
-  },
-  {
-    name: "%",
-    styles: "bg-opacity-50",
-    action: "ADD_OPERATION",
-    payload: "%",
-  },
+
   {
     name: "0",
     styles: "bg-opacity-50",
@@ -111,5 +100,11 @@ export const keyboardItems: Array<keyboardItemType> = [
     styles: "bg-opacity-50",
     action: "ADD_DECIMAL",
     payload: ".",
+  },
+  {
+    name: "=",
+    styles: "col-span-2 bg-opacity-20",
+    action: "CALCULATE",
+    payload: "",
   },
 ];
