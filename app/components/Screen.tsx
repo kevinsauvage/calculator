@@ -12,7 +12,7 @@ const Screen = () => {
       <div className="text-4xl text-white font-semibold leading-relaxed mb-2">
         {result || 0}
       </div>
-      <div className="text-2xl text-white">{history || ""}</div>
+      <div className="h-8	text-2xl text-white">{history || ""}</div>
     </div>
   );
 };
