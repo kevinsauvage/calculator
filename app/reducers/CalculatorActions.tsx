@@ -1,27 +1,29 @@
-import { formatEval } from "../utils";
-
-const setCharAtIndex = (string: string, index: number, char: string) =>
-  string.substring(0, index) + char + string.substring(index + 1);
-
-const isEndingWithOperation = (string: string) =>
-  ["*", "/", "+", "-"].includes(string.slice(-1));
+import { getResult, isEndingWithOperation, setCharAtIndex } from "../utils";
 
 export const handleAddNumber = (state: any, action: any) => {
-  const returnedState = {
-    ...state,
-    currentOperand: state.currentOperand + action.payload,
-    history: state.history + action.payload,
-  };
+  const history = state.history + action.payload;
+  const currentOperand = state.currentOperand + action.payload;
 
-  returnedState.result = eval(formatEval(returnedState.history));
-
-  return returnedState;
+  try {
+    return {
+      ...state,
+      currentOperand,
+      history,
+      result: getResult(history),
+    };
+  } catch (e) {
+    return {
+      ...state,
+      result: "Error",
+      currentNumber: "",
+      operation: "",
+      currentOperator: "",
+    };
+  }
 };
 
 export const handleAddDecimal = (state: any, action: any) => {
-  if (state.currentOperand.includes(".")) {
-    return state;
-  }
+  if (state.currentOperand.includes(".") || !state.currentOperand) return state;
 
   return {
     ...state,
@@ -72,8 +74,9 @@ export const handleAddOperation = (state: any, action: any) => {
 };
 
 export const handleCalculate = (state: any) => {
+  if (!state.currentOperand) return state;
   try {
-    const result = eval(formatEval(state.history));
+    const result = getResult(state.history);
     return {
       ...state,
       result,
@@ -105,7 +108,7 @@ export const handleClear = (state: any) => ({
 export const handleDelete = (state: any) => {
   const currentOperand = state.currentOperand.slice(0, -1);
   const history = state.history.slice(0, -1);
-  const result = eval(formatEval(history));
+  const result = history ? getResult(history) : 0;
 
   return {
     ...state,
